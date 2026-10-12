@@ -3,128 +3,257 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistem Perpustakaan Universitas</title>
-
+    <title>Soal Ujian STS - Basis Data Sistem Perpustakaan</title>
+    
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Tailwind CSS (via CDN) -->
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Font Awesome 6 (Icons) -->
+    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <style>
+        @media print {
+            .no-print { display: none !important; }
+            body { background: white !important; font-size: 12pt; }
+            .card { border: 1px solid #ccc !important; box-shadow: none !important; }
+        }
+    </style>
 </head>
-<body class="bg-slate-100 font-sans text-gray-800">
+<body class="bg-slate-100 font-sans text-slate-800 pb-12">
 
-    <!-- Navbar menggunakan Bootstrap & Font Awesome -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-lg">
+    <!-- Header Navigation (No Print) -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-slate-900 shadow-lg no-print">
         <div class="container">
-            <a class="navbar-brand font-bold text-xl flex items-center gap-2" href="#">
-                <i class="fa-solid fa-book-bookmark text-amber-400"></i>
-                Perpustakaan Universitas
+            <a class="navbar-brand font-bold text-lg flex items-center gap-2" href="#">
+                <i class="fa-solid fa-database text-amber-400"></i>
+                Portal Ujian Basis Data
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
+            <button class="btn btn-warning btn-sm font-semibold flex items-center gap-2" onclick="window.print()">
+                <i class="fa-solid fa-print"></i> Cetak Lembar Soal
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto gap-2">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#"><i class="fa-solid fa-house me-1"></i> Beranda</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fa-solid fa-graduation-cap me-1"></i> Mahasiswa</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fa-solid fa-book me-1"></i> Katalog Buku</a>
-                    </li>
-                </ul>
-            </div>
         </div>
     </nav>
 
-    <!-- Hero Section dengan Utility Class Tailwind -->
-    <div class="max-w-6xl mx-auto my-8 p-6 bg-white rounded-2xl shadow-md border border-slate-200">
-        <div class="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div>
-                <h1 class="text-3xl font-extrabold text-slate-800 mb-2">
-                    Portal Ujian STS Basis Data
+    <!-- Main Container -->
+    <div class="max-w-5xl mx-auto my-6 px-4">
+        
+        <!-- Kop Lembar Ujian -->
+        <div class="bg-white rounded-xl shadow-md border border-slate-200 p-6 mb-6">
+            <div class="text-center border-b border-slate-200 pb-4 mb-4">
+                <h1 class="text-2xl font-black text-slate-800 tracking-wide uppercase">
+                    Sumatif Tengah Semester (STS)
                 </h1>
-                <p class="text-slate-600">
-                    Modul simulasi dan lembar ujian SQL untuk Perpustakaan Universitas.
-                </p>
+                <h2 class="text-lg font-semibold text-indigo-600">
+                    Mata Pelajaran: Administrasi & Pemrograman Basis Data (SQL)
+                </h2>
+                <p class="text-sm text-slate-500">Sistem Informasi Perpustakaan Universitas</p>
             </div>
-            <div class="flex gap-3">
-                <button class="btn btn-primary px-4 py-2 flex items-center gap-2">
-                    <i class="fa-solid fa-play"></i> Mulai Ujian
-                </button>
-                <button class="btn btn-outline-secondary px-4 py-2 flex items-center gap-2">
-                    <i class="fa-solid fa-file-pdf"></i> Unduh Soal
-                </button>
-            </div>
-        </div>
-    </div>
 
-    <!-- Grid Statistik menggunakan Bootstrap & Tailwind -->
-    <div class="container my-5">
-        <div class="row g-4">
-            <!-- Card 1 -->
-            <div class="col-md-4">
-                <div class="p-6 bg-blue-50 border-l-4 border-blue-500 rounded-lg shadow-sm flex items-center justify-between">
-                    <div>
-                        <p class="text-sm text-blue-600 font-semibold uppercase">Total Mahasiswa</p>
-                        <h2 class="text-2xl font-bold text-slate-800 mt-1">1,240</h2>
-                    </div>
-                    <i class="fa-solid fa-users text-4xl text-blue-400"></i>
+            <!-- Form Identitas Siswa -->
+            <div class="row g-3 text-sm">
+                <div class="col-md-6">
+                    <label class="form-label font-medium text-slate-700">Nama Lengkap Siswa / Mahasiswa:</label>
+                    <input type="text" class="form-control" placeholder="Isi nama lengkap...">
                 </div>
-            </div>
-            <!-- Card 2 -->
-            <div class="col-md-4">
-                <div class="p-6 bg-emerald-50 border-l-4 border-emerald-500 rounded-lg shadow-sm flex items-center justify-between">
-                    <div>
-                        <p class="text-sm text-emerald-600 font-semibold uppercase">Buku Tersedia</p>
-                        <h2 class="text-2xl font-bold text-slate-800 mt-1">3,850</h2>
-                    </div>
-                    <i class="fa-solid fa-book-open text-4xl text-emerald-400"></i>
+                <div class="col-md-3">
+                    <label class="form-label font-medium text-slate-700">NIM / NISN:</label>
+                    <input type="text" class="form-control" placeholder="Contoh: 2023001">
                 </div>
-            </div>
-            <!-- Card 3 -->
-            <div class="col-md-4">
-                <div class="p-6 bg-amber-50 border-l-4 border-amber-500 rounded-lg shadow-sm flex items-center justify-between">
-                    <div>
-                        <p class="text-sm text-amber-600 font-semibold uppercase">Peminjaman Aktif</p>
-                        <h2 class="text-2xl font-bold text-slate-800 mt-1">412</h2>
-                    </div>
-                    <i class="fa-solid fa-clock-rotate-left text-4xl text-amber-400"></i>
+                <div class="col-md-3">
+                    <label class="form-label font-medium text-slate-700">Waktu Ujian:</label>
+                    <input type="text" class="form-control bg-slate-100" value="90 Menit" readonly>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Area Embed Aplikasi Flutter Web (Opsional) -->
-    <div class="max-w-6xl mx-auto my-8 p-6 bg-white rounded-2xl shadow-md border border-slate-200">
-        <h2 class="text-xl font-bold text-slate-800 mb-4 flex items-center gap-2">
-            <i class="fa-solid fa-mobile-screen text-indigo-500"></i>
-            Aplikasi Flutter Web (Simulasi)
-        </h2>
-        <!-- Contoh pengintegrasian Flutter Web menggunakan IFRAME -->
-        <div class="w-full h-96 bg-slate-100 rounded-lg overflow-hidden border border-slate-300 flex items-center justify-center">
-            <!-- Ganti src dengan URL Flutter Web yang sudah di-deploy -->
-            <iframe src="about:blank" title="Flutter Web App" class="w-full h-full border-0 hidden"></iframe>
-            <div class="text-center p-6">
-                <i class="fa-brands fa-flutter text-5xl text-sky-400 mb-3"></i>
-                <p class="text-slate-500 text-sm">
-                    Untuk menampilkan Flutter, lakukan <code class="bg-slate-200 px-2 py-1 rounded">flutter build web</code> lalu hubungkan URL aplikasi ke dalam <code class="bg-slate-200 px-2 py-1 rounded">&lt;iframe&gt;</code> di atas.
-                </p>
+        <!-- Instruksi Ujian -->
+        <div class="bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-lg mb-6 shadow-sm">
+            <h3 class="font-bold text-amber-800 flex items-center gap-2 text-base">
+                <i class="fa-solid fa-circle-info"></i> Petunjuk Pengerjaan Soal:
+            </h3>
+            <ul class="list-disc list-inside text-sm text-amber-900 mt-2 space-y-1">
+                <li>Bacalah seluruh sintaks DDL, DML, Agregasi, JOIN, dan Trigger di bawah ini.</li>
+                <li>Lengkapi kolom isian kosong <code>[ ... ]</code> dengan sintaks SQL yang tepat.</li>
+                <li>Pilihlah jawaban **BENAR** atau **SALAH** pada pertanyaan evaluasi sintaks.</li>
+            </ul>
+        </div>
+
+        <!-- BAGIAN 1: DDL -->
+        <div class="card shadow-sm border-0 mb-6">
+            <div class="card-header bg-indigo-600 text-white font-bold flex items-center justify-between">
+                <span>BAGIAN 1: Data Definition Language (DDL)</span>
+                <span class="badge bg-white text-indigo-600">Nomor 1 - 2</span>
+            </div>
+            <div class="card-body">
+                <p class="text-sm text-slate-600 mb-3">Lengkapi klausa pembuatan database dan tabel berikut ini:</p>
+                
+                <div class="bg-slate-900 text-slate-100 p-4 rounded-lg font-mono text-sm space-y-3">
+                    <div>
+                        <span class="text-slate-400">-- 1. Membuat dan Mengaktifkan Database</span><br>
+                        CREATE DATABASE sistem_perpustakaan_universitas;<br>
+                        <input type="text" class="bg-slate-800 border border-indigo-500 text-amber-300 px-2 py-0.5 rounded w-32 focus:outline-none" placeholder="1. Klausa"> sistem_perpustakaan_universitas;
+                    </div>
+
+                    <div>
+                        <span class="text-slate-400">-- 2. Membuat Tabel Mahasiswa & Relasi Foreign Key</span><br>
+                        CREATE TABLE mahasiswa (<br>
+                        &nbsp;&nbsp;nim VARCHAR(15) <input type="text" class="bg-slate-800 border border-indigo-500 text-amber-300 px-2 py-0.5 rounded w-36" placeholder="2. Key">,<br>
+                        &nbsp;&nbsp;id_fakultas INT,<br>
+                        &nbsp;&nbsp;nama_mahasiswa VARCHAR(100) NOT NULL,<br>
+                        &nbsp;&nbsp;status <input type="text" class="bg-slate-800 border border-indigo-500 text-amber-300 px-2 py-0.5 rounded w-28" placeholder="3. Tipe Data">('Aktif', 'Lulus', 'Cuti') DEFAULT 'Aktif',<br>
+                        &nbsp;&nbsp;FOREIGN KEY (id_fakultas) <input type="text" class="bg-slate-800 border border-indigo-500 text-amber-300 px-2 py-0.5 rounded w-36" placeholder="4. Klausa Relasi"> fakultas(id_fakultas)<br>
+                        );
+                    </div>
+
+                    <div>
+                        <span class="text-slate-400">-- 3. Modifikasi Struktur Tabel (Menambah Kolom Baru)</span><br>
+                        ALTER TABLE mahasiswa <input type="text" class="bg-slate-800 border border-indigo-500 text-amber-300 px-2 py-0.5 rounded w-24" placeholder="5. Klausa"> nomor_telepon VARCHAR(15);
+                    </div>
+                </div>
             </div>
         </div>
+
+        <!-- BAGIAN 2: DML -->
+        <div class="card shadow-sm border-0 mb-6">
+            <div class="card-header bg-emerald-600 text-white font-bold flex items-center justify-between">
+                <span>BAGIAN 2: Data Manipulation Language (DML)</span>
+                <span class="badge bg-white text-emerald-600">Nomor 3</span>
+            </div>
+            <div class="card-body">
+                <p class="text-sm text-slate-600 mb-3">Isi bagian kosong untuk manipulasi data (Insert, Select, Update, Delete):</p>
+                
+                <div class="bg-slate-900 text-slate-100 p-4 rounded-lg font-mono text-sm space-y-3">
+                    <div>
+                        <span class="text-slate-400">-- Pengisian Data Baru</span><br>
+                        <input type="text" class="bg-slate-800 border border-emerald-500 text-amber-300 px-2 py-0.5 rounded w-32" placeholder="6. Perintah"> INTO fakultas (nama_fakultas) VALUES ('Fakultas Ilmu Komputer');
+                    </div>
+
+                    <div>
+                        <span class="text-slate-400">-- Pencarian Judul Buku dengan Wildcard</span><br>
+                        SELECT * FROM buku WHERE judul_buku <input type="text" class="bg-slate-800 border border-emerald-500 text-amber-300 px-2 py-0.5 rounded w-28" placeholder="7. Operator"> '%SQL%';
+                    </div>
+
+                    <div>
+                        <span class="text-slate-400">-- Pembaruan Status Mahasiswa</span><br>
+                        UPDATE mahasiswa <input type="text" class="bg-slate-800 border border-emerald-500 text-amber-300 px-2 py-0.5 rounded w-24" placeholder="8. Klausa"> status = 'Lulus' WHERE nim = '2023003';
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAGIAN 3: AGREGASI & GROUP BY -->
+        <div class="card shadow-sm border-0 mb-6">
+            <div class="card-header bg-amber-600 text-white font-bold flex items-center justify-between">
+                <span>BAGIAN 3: Fungsi Agregat & Pengelompokan</span>
+                <span class="badge bg-white text-amber-600">Nomor 4</span>
+            </div>
+            <div class="card-body">
+                <p class="text-sm text-slate-600 mb-3">Lengkapi query perhitungan statistik dan filter kelompok data:</p>
+                
+                <div class="bg-slate-900 text-slate-100 p-4 rounded-lg font-mono text-sm space-y-3">
+                    <div>
+                        <span class="text-slate-400">-- Rata-rata, Nilai Maksimum, dan Nilai Minimum Stok Buku</span><br>
+                        SELECT <br>
+                        &nbsp;&nbsp;<input type="text" class="bg-slate-800 border border-amber-500 text-amber-300 px-2 py-0.5 rounded w-24" placeholder="9. Fungsi">(stok_tersedia) AS rata_rata_stok,<br>
+                        &nbsp;&nbsp;MAX(stok_tersedia) AS stok_terbanyak,<br>
+                        &nbsp;&nbsp;MIN(stok_tersedia) AS stok_tersedikit<br>
+                        FROM buku;
+                    </div>
+
+                    <div>
+                        <span class="text-slate-400">-- Pengelompokan & Penyaringan Jumlah Mahasiswa per Fakultas >= 2</span><br>
+                        SELECT id_fakultas, COUNT(nim) AS jumlah_mahasiswa <br>
+                        FROM mahasiswa <br>
+                        <input type="text" class="bg-slate-800 border border-amber-500 text-amber-300 px-2 py-0.5 rounded w-28" placeholder="10. Klausa"> BY id_fakultas <br>
+                        <input type="text" class="bg-slate-800 border border-amber-500 text-amber-300 px-2 py-0.5 rounded w-28" placeholder="11. Filter"> COUNT(nim) >= 2;
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAGIAN 4: PENGGABUNGAN TABEL (JOIN) -->
+        <div class="card shadow-sm border-0 mb-6">
+            <div class="card-header bg-sky-600 text-white font-bold flex items-center justify-between">
+                <span>BAGIAN 4: Penggabungan Tabel (JOIN & UNION)</span>
+                <span class="badge bg-white text-sky-600">Nomor 5</span>
+            </div>
+            <div class="card-body">
+                <p class="text-sm text-slate-600 mb-3">Lengkapi klausa join untuk menghubungkan beberapa tabel:</p>
+                
+                <div class="bg-slate-900 text-slate-100 p-4 rounded-lg font-mono text-sm space-y-3">
+                    <div>
+                        <span class="text-slate-400">-- Penggabungan Data Irisan Mahasiswa & Fakultas</span><br>
+                        SELECT m.nim, m.nama_mahasiswa, f.nama_fakultas <br>
+                        FROM mahasiswa m <br>
+                        <input type="text" class="bg-slate-800 border border-sky-500 text-amber-300 px-2 py-0.5 rounded w-36" placeholder="12. Type Join"> JOIN fakultas f <input type="text" class="bg-slate-800 border border-sky-500 text-amber-300 px-2 py-0.5 rounded w-20" placeholder="13. Key"> m.id_fakultas = f.id_fakultas;
+                    </div>
+
+                    <div>
+                        <span class="text-slate-400">-- Menggabungkan Dua Query (FULL OUTER JOIN)</span><br>
+                        SELECT m.nim, m.nama_mahasiswa, p.id_pinjam FROM mahasiswa m LEFT JOIN peminjaman p ON m.nim = p.nim <br>
+                        <input type="text" class="bg-slate-800 border border-sky-500 text-amber-300 px-2 py-0.5 rounded w-28" placeholder="14. Operator"> <br>
+                        SELECT m.nim, m.nama_mahasiswa, p.id_pinjam FROM mahasiswa m RIGHT JOIN peminjaman p ON m.nim = p.nim;
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAGIAN 5: TRIGGER OTOMATIS -->
+        <div class="card shadow-sm border-0 mb-6">
+            <div class="card-header bg-purple-600 text-white font-bold flex items-center justify-between">
+                <span>BAGIAN 5: Pemicu Otomatis (Trigger)</span>
+                <span class="badge bg-white text-purple-600">Nomor 6</span>
+            </div>
+            <div class="card-body">
+                <p class="text-sm text-slate-600 mb-3">Lengkapi bagian pengondisian trigger untuk stok buku:</p>
+                
+                <div class="bg-slate-900 text-slate-100 p-4 rounded-lg font-mono text-sm space-y-3">
+                    <div>
+                        DELIMITER //<br>
+                        CREATE TRIGGER trg_kurangi_stok<br>
+                        <input type="text" class="bg-slate-800 border border-purple-500 text-amber-300 px-2 py-0.5 rounded w-32" placeholder="15. Waktu"> INSERT ON detail_pinjam<br>
+                        FOR EACH ROW<br>
+                        BEGIN<br>
+                        &nbsp;&nbsp;UPDATE buku SET stok_tersedia = stok_tersedia - 1 WHERE id_buku = <input type="text" class="bg-slate-800 border border-purple-500 text-amber-300 px-2 py-0.5 rounded w-24" placeholder="16. Scope">.id_buku;<br>
+                        END //<br>
+                        DELIMITER ;
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAGIAN 6: EVALUASI BENAR / SALAH -->
+        <div class="card shadow-sm border-0 mb-6">
+            <div class="card-header bg-rose-600 text-white font-bold">
+                BAGIAN 6: Evaluasi Sintaks (Benar / Salah)
+            </div>
+            <div class="card-body">
+                <div class="space-y-4 text-sm">
+                    <div class="p-3 bg-slate-50 border rounded-lg flex items-center justify-between gap-4">
+                        <span>17. Perintah <code>SUM(stok_tersedia)</code> digunakan untuk menghitung total jumlah baris/record pada tabel buku.</span>
+                        <select class="form-select w-36 font-semibold">
+                            <option value="">- Pilih -</option>
+                            <option value="BENAR">BENAR</option>
+                            <option value="SALAH">SALAH</option>
+                        </select>
+                    </div>
+
+                    <div class="p-3 bg-slate-50 border rounded-lg flex items-center justify-between gap-4">
+                        <span>18. Fungsi <code>SIGNAL SQLSTATE '45000'</code> pada Trigger berfungsi memunculkan pesan error buatan dan membatalkan transaksi.</span>
+                        <select class="form-select w-36 font-semibold">
+                            <option value="">- Pilih -</option>
+                            <option value="BENAR">BENAR</option>
+                            <option value="SALAH">SALAH</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
-    <!-- Footer -->
-    <footer class="bg-slate-900 text-slate-400 py-6 text-center text-sm border-t border-slate-800">
-        <p>&copy; 2026 Sistem Perpustakaan Universitas. Dibuat menggunakan Bootstrap, Tailwind CSS & Font Awesome.</p>
-    </footer>
-
-    <!-- Bootstrap 5 JavaScript Bundle -->
+    <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
